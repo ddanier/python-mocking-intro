@@ -10,6 +10,18 @@ def test_unit():
     assert unit() is True
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 # Integration tests will ensure the interface between units work
 
 def other_unit():
@@ -20,6 +32,20 @@ def integration():
 
 def test_integration():
     assert integration() is True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # End to end tests will check the whole setup

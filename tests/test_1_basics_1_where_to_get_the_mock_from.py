@@ -9,6 +9,20 @@ def test_with_unittest_mock():
     assert some_mock()
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # DO NOT use the mocker fixture provided my `pytest-mock` and more.
 
 def test_with_pytest_mocker(mocker):  # <- THIS IS BAD
