@@ -1,5 +1,3 @@
-from typing import Union
-
 from fastapi import FastAPI
 
 from mocking_intro.dto import Healthcheck, HealthState

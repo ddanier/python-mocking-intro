@@ -13,3 +13,12 @@ def "nur run" [] {
 def "nur test" [] {
     uv run pytest mocking_intro/ --cov  mocking_intro/ --cov-report term-missing
 }
+
+def "nur lint" [] {
+    uv run ruff check --fix mocking_intro/
+}
+
+def "nur qa" [] {
+    nur lint
+    nur test
+}
