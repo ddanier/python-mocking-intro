@@ -1,9 +1,9 @@
 def "nur install" [] {
-    uv sync
+    uv sync --group dev
 }
 
 def "nur update" [] {
-    uv sync
+    uv sync --group dev
 }
 
 def "nur run" [] {

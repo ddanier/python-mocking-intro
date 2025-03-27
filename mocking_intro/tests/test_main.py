@@ -1,4 +1,8 @@
+import pytest
+
 from mocking_intro.main import root
 
-def test_main():
-    assert root() == {"Hello": "World"}
+
+@pytest.mark.anyio
+async def test_main():
+    assert await root() == {"Hello": "World"}
