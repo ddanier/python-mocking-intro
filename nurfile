@@ -1,0 +1,15 @@
+def "nur install" [] {
+    uv sync
+}
+
+def "nur update" [] {
+    uv sync
+}
+
+def "nur run" [] {
+    uv run fastapi dev mocking_intro/main.py
+}
+
+def "nur test" [] {
+    uv run pytest mocking_intro/ --cov  mocking_intro/ --cov-report term-missing
+}

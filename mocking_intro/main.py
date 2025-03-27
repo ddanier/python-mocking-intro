@@ -1,6 +1,22 @@
-def main():
-    print("Hello from mocking-intro!")
+from typing import Union
+
+from fastapi import FastAPI
+
+from mocking_intro.dto import Healthcheck, HealthState
+
+app = FastAPI()
 
 
-if __name__ == "__main__":
-    main()
+@app.get("/", include_in_schema=False)
+async def root():
+    return {"Hello": "World"}
+
+
+@app.get("/healthcheck")
+async def healthcheck() -> Healthcheck:
+    return Healthcheck(
+        database=HealthState.OK,
+        cache=HealthState.OK,
+        queue=HealthState.OK,
+        overall=HealthState.OK,
+    )
