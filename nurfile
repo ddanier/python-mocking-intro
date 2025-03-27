@@ -6,16 +6,12 @@ def "nur update" [] {
     uv sync --group dev
 }
 
-def "nur run" [] {
-    uv run fastapi dev mocking_intro/main.py
-}
-
 def "nur test" [] {
-    uv run pytest mocking_intro/ --cov  mocking_intro/ --cov-report term-missing
+    uv run pytest tests/
 }
 
 def "nur lint" [] {
-    uv run ruff check --fix mocking_intro/
+    uv run ruff check --fix tests/
 }
 
 def "nur qa" [] {
