@@ -3,6 +3,8 @@
 See tests in [`tests/`](tests/) for details. The tests are split into separate files, that should explain things
 bit by bit.
 
+There are some skipped tests that would fail. You may want to play around with those as well.
+
 Happy coding!
 
 ## Running the tests
