@@ -15,5 +15,5 @@ If you have [`nur`](https://nur-taskrunner.github.io/docs/) installed you can ju
 In all other cases:
 
 * Use `uv sync --groups dev` to install everything
-* Use `uv run pytest tests/` to install the tests
+* Use `uv run pytest tests/` to install the tests  
   (you may also run single files of course)
