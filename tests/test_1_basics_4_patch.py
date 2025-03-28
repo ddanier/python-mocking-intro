@@ -4,6 +4,7 @@ import pytest
 
 
 # You may use `mock.patch` to replace any foreign module attribute
+
 @pytest.fixture
 def mock_production_code():
     with mock.patch("mocking_intro.functions.production_code") as mocked:
@@ -42,6 +43,9 @@ def test_production_code_will_be_mocked_by_patch(mock_production_code):
 
 
 # You may use `autospec=True` to grab the spec before the patch
+#
+# Note: `patch` will use `MagicMock` or `AsyncMock` depending on the object type it needs to patch
+
 @pytest.fixture
 def mock_production_class():
     with mock.patch("mocking_intro.classes.ProductionClass", autospec=True) as mocked:

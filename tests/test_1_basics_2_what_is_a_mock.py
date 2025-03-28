@@ -5,6 +5,7 @@ import pytest
 
 
 # A mock is a function
+
 def test_mock_is_a_function():
     some_mock = mock.Mock()
 
@@ -28,6 +29,7 @@ def test_mock_is_a_function():
 
 
 # A mock has all attributes you could think of
+
 def test_mock_has_attributes():
     some_mock = mock.Mock()
 
@@ -49,6 +51,7 @@ def test_mock_has_attributes():
 
 
 # A mock has all attributes you could think of
+
 def test_mock_attributes_are_function_again():
     some_mock = mock.Mock()
 
@@ -73,6 +76,7 @@ def test_mock_attributes_are_function_again():
 
 
 # Waaaahhhh....recursion!
+
 def test_mock_attributes_are_function_again_are_function_again_are_function_again_are_function_again():
     some_mock = mock.Mock()
 
@@ -96,6 +100,7 @@ def test_mock_attributes_are_function_again_are_function_again_are_function_agai
 
 
 # A mock can use a spec as its basis and will then try to mimic that spec
+
 class Something:
     def some_method(self):
         pass
@@ -125,6 +130,7 @@ def test_mock_can_use_spec():
 
 
 # A mock can also use an instance as its spec
+
 def test_mock_can_use_instance_spec():
     instance = Something()
     some_mock = mock.Mock(instance)  # or mock.Mock(spec=instance)
@@ -151,6 +157,7 @@ def test_mock_can_use_instance_spec():
 
 
 # The spec will not forbid the mock itself being callable (mocking classes)
+
 def test_mock_with_spec_is_still_callable():
     SomeMock = mock.Mock(Something)  # or mock.Mock(spec=Something)
 
@@ -181,6 +188,7 @@ def test_mock_with_spec_is_still_callable():
 
 
 # You can also check the arguments of a call
+
 def test_mock_can_check_arguments():
     some_mock = mock.Mock()
 
@@ -217,6 +225,7 @@ def test_mock_can_check_arguments():
 
 
 # You can of course also check for keyworded arguments
+
 def test_mock_can_check_keyworded_arguments():
     some_mock = mock.Mock()
 

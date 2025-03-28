@@ -1,6 +1,6 @@
 0. Intro
-   * pytest setup: anyio
    * unit vs. integration vs. e2e
+   * pytest setup: anyio
 1. Basics
    * unittest.mock vs. mocking
    * What is mocking, what is happening here?

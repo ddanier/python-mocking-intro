@@ -5,6 +5,7 @@ import pytest
 
 
 # Some notes about generators: Result is a generator object!
+
 def some_generator():
     yield 1
     yield 2
@@ -34,7 +35,9 @@ def test_return_value_of_generator_is_a_generator():
 
 
 # You can manually collect generators using iter() and next()
-# (This is what happends in a for-loop internally)
+#
+# Hint: This is what happens in a for-loop internally
+
 def test_generators_can_be_collected_with_iter_and_next():
     result = iter(some_generator())
 
@@ -61,7 +64,9 @@ def test_generators_can_be_collected_with_iter_and_next():
 
 
 # To create a mock for a generator you must return a generator-like object
-# see also https://docs.python.org/3/library/unittest.mock-examples.html#mocking-a-generator-method
+#
+# See also https://docs.python.org/3/library/unittest.mock-examples.html#mocking-a-generator-method
+
 def test_generators_can_be_mocked():
     generator_mock = mock.Mock(
         return_value=mock.MagicMock(
@@ -93,6 +98,7 @@ def test_generators_can_be_mocked():
 
 
 # Personally I prefer to use a utils function to actually create a generator
+
 def generator(items):
     def _generator():
         yield from items
@@ -128,6 +134,7 @@ def test_generators_can_be_mocked_using_utils_function():
 
 
 # Or a more normal example
+
 def test_generators_can_be_mocked_using_utils_function_in_for():
     generator_mock = mock.Mock(
         side_effect=generator([1,2]),
@@ -138,3 +145,49 @@ def test_generators_can_be_mocked_using_utils_function_in_for():
         result.append(i)
 
     assert result == [1, 2]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Warning: If you mock a generator using a list you might be doing something WRONG
+#
+# Remember: Don't use lists to mock generators
+
+def test_generators_should_not_be_mocked_by_lists():
+    # List mocks behave the same for most generator usage
+    generator_mock = mock.Mock(
+        return_value=[1,2],
+    )
+
+    result = []
+    for i in generator_mock():
+        result.append(i)
+
+    assert result == [1, 2]
+
+    # BUT they don't impose the same restrictions!
+    result = generator_mock()
+
+    assert result[0] == 1  # <- This would (AND SHOULD) fail with a generator
+
+    # See for comparison what happens when using an actual generator
+    generator_mock = mock.Mock(
+        side_effect=generator([1,2]),
+    )
+
+    result = generator_mock()
+
+    with pytest.raises(TypeError):
+        assert result[0] == 1  # <- Fails with a generator, as it should be

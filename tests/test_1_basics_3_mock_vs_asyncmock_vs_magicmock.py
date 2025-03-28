@@ -4,6 +4,7 @@ import pytest
 
 
 # A mock will not allow async usage by default
+
 @pytest.mark.anyio
 async def test_mock_is_not_async():
     some_mock = mock.Mock()
@@ -27,6 +28,7 @@ async def test_mock_is_not_async():
 
 
 # But you can create async mocks
+
 @pytest.mark.anyio
 async def test_asyncmock_is_async():
     some_mock = mock.AsyncMock()
@@ -51,6 +53,7 @@ async def test_asyncmock_is_async():
 
 
 # Be sure to use "awaited" assertions
+
 @pytest.mark.anyio
 async def test_asyncmock_needs_to_be_awaited():
     some_mock = mock.AsyncMock()
@@ -81,6 +84,7 @@ async def test_asyncmock_needs_to_be_awaited():
 
 
 # Async methods with a spec don't need an AsyncMock
+
 class Something:
     async def some_method(self):
         pass
@@ -110,11 +114,12 @@ async def test_asyncmock_for_spec():
 
 
 # If you would use an AsyncMock the mock itself would be async
+
 @pytest.mark.anyio
 async def test_asyncmock_for_spec_WRONG():
     some_mock = mock.AsyncMock(Something)  # <- THIS IS WRONG
 
-    await some_mock()  # <- BUT WHY???!
+    await some_mock()  # <- Unless you do this, BUT WHY???!
 
 
 
@@ -132,7 +137,10 @@ async def test_asyncmock_for_spec_WRONG():
 
 
 # Magic mocks are when using magic methods (and a spec)
-# Note: Python will use MagicMock by default, to ensure maximum compatibility, see `patch` later
+#
+# Note: Python will use MagicMock by default, to ensure maximum compatibility, see `patch` later.
+# Note: More about context managers later!
+
 class SomeContextManager:
     def __enter__(self):
         return self

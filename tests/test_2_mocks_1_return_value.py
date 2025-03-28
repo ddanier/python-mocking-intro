@@ -4,6 +4,7 @@ import pytest
 
 
 # You can set the return_value of a mock
+
 def test_return_value():
     some_mock = mock.Mock(return_value="ok")
 
@@ -25,6 +26,7 @@ def test_return_value():
 
 
 # This is very useful for more complex mocks
+
 class Inner:
     def some_method(self):
         ...
@@ -64,6 +66,7 @@ def test_return_value_for_more_complex_case():
 
 
 # Of course async mocks work the same
+
 @pytest.mark.anyio
 async def test_async_return_value():
     some_mock = mock.AsyncMock(return_value="ok")

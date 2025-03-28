@@ -2,6 +2,7 @@ from unittest import mock
 
 
 # `mock.patch.object` can be used to patch object instance attributes
+
 class Something:
     attr = "Und alle so Yeah!"
 
@@ -30,6 +31,7 @@ def test_mock_patch_object_replaces_attribute():
 
 
 # `mock.patch.multiple` patches multiple attributes
+
 class SomethingElse:
     attr1 = 1
     attr2 = 2
@@ -61,6 +63,7 @@ def test_mock_patch_multiple_patches_multiple_things():
 
 
 # Note: There also is a `mock.patch.dict` function (I never use this....)
+
 def test_mock_patch_dict_replaces_item():
     somedict = {"hello": "world"}
 

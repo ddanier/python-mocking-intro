@@ -20,6 +20,7 @@ async def something():
 
 
 # We use anyio, as it has the cleanest way to support async + is what FastAPI uses anyways
+
 @pytest.mark.anyio
 async def test_main():
     assert await something() == {"Hello": "World"}
@@ -40,6 +41,7 @@ async def test_main():
 
 
 # With anyio an async fixture will only be awaited if your test is async
+
 @pytest.fixture
 async def async_fixture():
     return True

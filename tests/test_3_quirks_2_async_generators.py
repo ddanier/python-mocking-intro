@@ -5,6 +5,7 @@ import pytest
 
 
 # Async generators also return a generator object, a AsyncGenerator in this case
+
 async def some_generator():
     yield 1
     yield 2
@@ -34,7 +35,9 @@ async def test_return_value_of_async_generator_is_an_async_generator():
 
 
 # You can manually collect async generators using aiter() and anext()
-# (This is what happends in a for-loop internally)
+#
+# Hint: This is what happends in a for-loop internally
+
 @pytest.mark.anyio
 async def test_async_generators_can_be_collected_with_iter_and_next():
     result = aiter(some_generator())  # <- still NO await
@@ -63,7 +66,9 @@ async def test_async_generators_can_be_collected_with_iter_and_next():
 
 
 # Let's use the util function schema to create a async generator mock
-# (Note: Mocking this using only mocks is really hard - I would just not do this)
+#
+# Note: Mocking this using only mocks is really hard - I would just not want to do this.
+
 def async_generator(items):
     async def _generator():
         for item in items:  # <- There is no `async yield from`, see https://peps.python.org/pep-0525/#asynchronous-yield-from
@@ -101,6 +106,7 @@ async def test_async_generators_can_be_mocked_using_utils_function():
 
 
 # Or a more normal example
+
 @pytest.mark.anyio
 async def test_async_generators_can_be_mocked_using_utils_function_in_for():
     generator_mock = mock.Mock(
