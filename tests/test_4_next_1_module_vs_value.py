@@ -6,6 +6,8 @@ from mocking_intro.module.receiver import get_answer
 
 # When having some modules and imports the question is: Where to patch/mock things?
 #
+# See ../mocking_intro/module/giver.py
+# See ../mocking_intro/module/receiver.py
 # See https://docs.python.org/3/library/unittest.mock.html#where-to-patch
 
 @pytest.mark.skip("Will fail, as we are patching the wrong object")
