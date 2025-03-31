@@ -1,9 +1,10 @@
 # Python mocking intro (using pytest)
 
 See tests in [`tests/`](tests/) for details. The tests are split into separate files, that should explain things
-bit by bit.
+bit by bit - following the [agenda](AGENDA.md).
 
-There are some skipped tests that would fail. You may want to play around with those as well.
+There are some skipped tests that would fail. You may want to play around with those as well. Also there are
+some [links you might want to read](DOCS.md).
 
 Happy coding!
 
