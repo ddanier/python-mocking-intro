@@ -120,7 +120,7 @@ async def test_root_as_unit_test(app_client):
 
 
 # Still we don't really have a unit test, as this all depends on the main FastAPI app. The answer router
-# is integrated into this. So let's create a real unit.
+# is integrated into this. So let's create a real unit test.
 #
 # Hint: Also do this when you test dependencies etc. This allows you to ensure a) you have a well defined
 #       test case and b) allows you to also test for and thus support different configurations etc.

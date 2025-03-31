@@ -12,6 +12,7 @@ dependencies = [
 dev = [
     "anyio>=4.9.0",
     "httpx>=0.28.1",
+    "mock-open>=1.4.0",
     "pytest>=8.3.5",
     "pytest-cov>=6.0.0",
     "pytest-mock>=3.14.0",
