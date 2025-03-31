@@ -1,25 +1,12 @@
 import pytest
 
 
+# We use anyio, as it has the cleanest way to support async + is what FastAPI uses anyways
+# (Hint: conftest.py)
+
 async def something():
     return {"Hello": "World"}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# We use anyio, as it has the cleanest way to support async + is what FastAPI uses anyways
 
 @pytest.mark.anyio
 async def test_main():

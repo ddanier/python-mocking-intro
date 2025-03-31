@@ -5,6 +5,8 @@ import pytest
 
 
 # A context manager is an object that implements __enter__ and __exit__
+#
+# See https://docs.python.org/3/reference/compound_stmts.html#with
 
 class SimpleContextManager:
     did_call_enter = False
@@ -110,6 +112,8 @@ def test_simple_context_manager_mock():
 
 
 # Same is true for async context managers (although naming changes)
+#
+# See https://docs.python.org/3/reference/compound_stmts.html#the-async-with-statement
 
 @pytest.mark.anyio
 async def test_async_content_manager():

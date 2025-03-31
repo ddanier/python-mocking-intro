@@ -163,8 +163,9 @@ def test_generators_can_be_mocked_using_utils_function_in_for():
 
 # Warning: If you mock a generator using a list you might be doing something WRONG
 #
-# Remember: Don't use lists to mock generators
+# Remember: Try to not use lists to mock generators
 
+@pytest.mark.skip("The behaviour of a mock is different, so this doesn't fail")
 def test_generators_should_not_be_mocked_by_lists():
     # List mocks behave the same for most generator usage
     generator_mock = mock.Mock(
@@ -177,12 +178,15 @@ def test_generators_should_not_be_mocked_by_lists():
 
     assert result == [1, 2]
 
-    # BUT they don't impose the same restrictions!
+    # BUT lists don't impose the same restrictions as generators do!
     result = generator_mock()
 
-    assert result[0] == 1  # <- This would (AND SHOULD) fail with a generator
+    with pytest.raises(TypeError):
+        assert result[0] == 1  # <- This would (AND SHOULD) fail with a generator, but doesn't
 
-    # See for comparison what happens when using an actual generator
+
+# See for comparison what happens when using an actual generator
+def test_generators_should_be_mock_by_a_generator():
     generator_mock = mock.Mock(
         side_effect=generator([1,2]),
     )
